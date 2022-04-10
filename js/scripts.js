@@ -22,4 +22,24 @@ $(document).ready(function() {
         $(".sidebar").toggleClass("sidebar--disabled")
         $(this).toggleClass("sidebar__collapse--active")
     })
+
+    $(".mob-burger").click(function() {
+        $(".sidebar").addClass("sidebar--show")
+        $("body").append(`<div class="sidebar-backdrop"></div>`)
+        $("body").addClass("body--fixed")
+
+        $(".sidebar-backdrop").click(function() {
+            closeSidebar()
+        })
+    })
+
+    $(".sidebar__close").click(function() {
+        closeSidebar()
+    })
+
+    function closeSidebar() {
+        $(".sidebar-backdrop").remove()
+        $(".sidebar").removeClass("sidebar--show")
+        $("body").removeClass("body--fixed")
+    }
 });

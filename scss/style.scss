@@ -3,6 +3,9 @@
 body {
     color: #1F2125;
     font-family: 'Inter', sans-serif;
+    &.body--fixed {
+        overflow-y: hidden;
+    }
 }
 
 .layout {
@@ -25,24 +28,26 @@ body {
     flex-direction: column;
     transition: all .225s;
     &--collapsed {
-        width: 96px;
-        .sidebar__item {
-            padding-right: 26px;
-            &-show {
+        @media screen and (min-width: 992px) {
+            width: 96px;
+            .sidebar__item {
+                padding-right: 26px;
+                &-show {
+                    justify-content: center;
+                }
+                &-title {
+                    display: none;
+                }
+                &-hidden {
+                    display: none;
+                }
+            }
+            .sidebar__link {
                 justify-content: center;
             }
-            &-title {
+            .sidebar__collapse {
                 display: none;
             }
-            &-hidden {
-                display: none;
-            }
-        }
-        .sidebar__link {
-            justify-content: center;
-        }
-        .sidebar__collapse {
-            display: none;
         }
     }
     &__top {
@@ -75,6 +80,9 @@ body {
                 }
             }
         }
+    }
+    &__close {
+        display: none;
     }
     &__items {
         margin-top: 40px;
@@ -143,5 +151,52 @@ body {
     }
     .mCSB_container {
         margin-right: 10px;
+    }
+}
+
+.mob-burger {
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    .mob-burger {
+        display: block;
+        width: 24px;
+        margin-left: auto;
+        margin: 0 0 30px auto;
+    }
+    .content {
+        padding: 24px 56px;
+    }
+    .sidebar {
+        position: fixed;
+        right: -100000px;
+        top: 0;
+        z-index: 100;
+        &-backdrop {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            left: 0;
+            top: 0;
+        }
+        &--show {
+            right: 0;
+        }
+        &__collapse {
+            display: none;
+        }
+        &__close {
+            display: flex;
+            width: 24px;
+            height: 24px;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .sidebar {
+        width: 100%;
     }
 }
