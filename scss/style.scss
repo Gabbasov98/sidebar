@@ -32,14 +32,18 @@ body {
             width: 96px;
             .sidebar__item {
                 padding-right: 26px;
+                background: transparent;
                 &-show {
                     justify-content: center;
+                }
+                &-arrow {
+                    display: none;
                 }
                 &-title {
                     display: none;
                 }
                 &-hidden {
-                    display: none;
+                    display: none !important;
                 }
             }
             .sidebar__link {
@@ -95,6 +99,9 @@ body {
                 &-show {
                     opacity: 1;
                 }
+                &-arrow {
+                    transform: rotate(180deg);
+                }
             }
         }
         &--active {
@@ -124,6 +131,12 @@ body {
         }
         &-title {
             margin-left: 20px;
+        }
+        &-arrow {
+            display: block;
+            margin-left: auto;
+            flex-shrink: 0;
+            transition: all .225s;
         }
         &-hidden {
             padding: 6px 0 0 50px;
