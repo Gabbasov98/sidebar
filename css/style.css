@@ -346,6 +346,10 @@ body.body--fixed {
   .sidebar {
     width: 100%;
   }
+
+  .content {
+    padding: 24px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
